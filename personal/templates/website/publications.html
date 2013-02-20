@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Publications{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>
+      Publications
+      <small>
+          Click on an item for more information.
+      </small>
+  </h1>
+</div>
+<ol id="publist">
+  {% for pub in publications %}
+    <li>
+      <div class="li-expand">
+        <p class="ref">
+          {% for auth in pub.ordered_author_list %}
+            <span{% if auth.first_name == 'Claude' %} class="me"{% endif %}>
+              {{ auth.last_name }},
+              {{ auth.first_name }}{% if auth.middle_initial %}
+              {{ auth.middle_initial }}{% endif %}</span>{% if forloop.last %}
+              {% else %};{% endif %}
+          {% endfor %}
+          <em><a href={{ pub.url }} target="_blank">{{ pub.journal.name }}</a></em>
+          <strong>{{ pub.year }}</strong>,
+          <em>{{ pub.volume }}</em>{% if pub.issue %}({{ pub.issue }}){% endif %},
+          {{ pub.start_page }}&ndash;{{ pub.end_page }}.
+        </p>
+        <div class="abstract">
+          <h2>{{ pub.title|safe }}</h2>
+          <img src={{ pub.image_link }} alt="" />
+          <p class="abs-text">
+            {{ pub.abstract|safe }}
+          </p>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ol>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/pubs.js"></script>
+{% endblock %}

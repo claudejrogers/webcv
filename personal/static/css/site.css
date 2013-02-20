@@ -1,0 +1,35 @@
+.small-caps {
+  font-variant: small-caps;
+}
+
+.ref:hover {
+  background: #FFFFEE;
+  color: #000;
+  cursor: pointer;
+}
+
+.abs-text {
+    text-align: justify;
+    line-height: 150%;
+    padding-top: 30px;
+}
+
+.li-expand-off div.abstract {
+    display: none;
+}
+
+.li-expand-on div.abstract {
+    display: block;
+    padding: 10px 10px 40px 10px;
+}
+
+.me {
+    text-decoration:underline;
+}
+
+p.rblurb {
+    text-align: justify;
+}
+//#next-image {
+//    width: 870px;
+//}
